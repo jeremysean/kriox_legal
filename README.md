@@ -21,23 +21,19 @@ under a repository sub-path such as `/kriox_legal/`.
 
 ## Publishing
 
-Hosted with GitHub Pages from the root of the `main` branch.
-
-1. Settings, Pages, Source: Deploy from a branch, branch `main`, folder `/ (root)`.
-2. The site is served at `https://<username>.github.io/<repository>/`.
-
-The repository must be public. Do not add private material to it.
+Hosted with GitHub Pages from the root of the `main` branch (Settings, Pages, Source: Deploy from a branch, branch
+`main`, folder `/ (root)`), at <https://jeremysean.github.io/kriox_legal/>.
 
 ## Google Cloud configuration
 
-In the Google Cloud console, Google Auth Platform, Branding, with the site address above:
+In the Google Cloud console, Google Auth Platform, Branding:
 
 | Field | Value |
 |---|---|
-| Application home page | `https://<username>.github.io/<repository>/` |
-| Application privacy policy link | `https://<username>.github.io/<repository>/privacy.html` |
-| Application terms of service link | `https://<username>.github.io/<repository>/terms.html` |
-| Authorized domains | `<username>.github.io` |
+| Application home page | `https://jeremysean.github.io/kriox_legal/` |
+| Application privacy policy link | `https://jeremysean.github.io/kriox_legal/privacy.html` |
+| Application terms of service link | `https://jeremysean.github.io/kriox_legal/terms.html` |
+| Authorized domains | `jeremysean.github.io` |
 
 Google requires the privacy policy to be on the same domain as the home page, and each authorized domain to be
 verified in [Google Search Console](https://search.google.com/search-console) (URL-prefix property, HTML-file
