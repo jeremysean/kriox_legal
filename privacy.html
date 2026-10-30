@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kriox Privacy Policy</title>
+<meta name="description" content="How Kriox handles Google user data and other information.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a href="index.html"><img src="logo.svg" alt="Kriox"></a>
+  <nav><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></nav>
+</header>
+<main>
+<h1>Privacy Policy</h1>
+<p class="meta">Last updated: 30 October 2026</p>
+
+<p>Kriox is a prototype purchasing assistant operated by the Kriox project team ("we"). This policy explains what
+data Kriox handles, in particular the data it receives from Google when a Gmail account is connected, and what we do
+with it. For questions write to <a href="mailto:watund3@gmail.com">watund3@gmail.com</a>.</p>
+
+<h2>1. Who uses Kriox</h2>
+<p>Kriox has no public sign-up. Its users are the staff accounts created by the project team (for example a warehouse
+clerk, a buyer or a plant manager) and, indirectly, the suppliers who exchange e-mail with the system. The Gmail
+connection is made once, by the owner of one Gmail account, for the whole system.</p>
+
+<h2>2. Google user data we access</h2>
+<p>When the Gmail account owner connects the account, Kriox asks for one scope:
+<code>https://www.googleapis.com/auth/gmail.modify</code>. Kriox uses it for these actions only:</p>
+<ul>
+  <li><strong>Read</strong> new messages that arrive in the inbox. Kriox downloads each new message to see who it was
+  addressed to.</li>
+  <li><strong>Keep</strong> only messages addressed to Kriox's own reply address (a plus-address of the connected
+  account, such as <code>name+grv@gmail.com</code>). Every other message is dropped from memory as soon as this check
+  fails: it is not stored, analysed or shown to anyone.</li>
+  <li><strong>Label</strong> each message that Kriox kept with the label <code>GRV-processed</code>, so it is not
+  read twice. This is why a scope that allows changing labels is needed.</li>
+</ul>
+<p>Kriox does not send mail through the Gmail API, does not delete mail, does not change any message other than adding
+that label, and does not read contacts, calendar, Drive or any other Google data. Outgoing mail is sent through
+Amazon Simple Email Service.</p>
+<p>If Google sign-in is switched on for the web application, Kriox also receives the signing-in user's name and e-mail
+address (scopes <code>openid email profile</code>) to identify them. A person signing in this way has no access to
+any case until an administrator gives them a role.</p>
+
+<h2>3. What we do with kept messages</h2>
+<p>For each kept message Kriox stores the sender, subject, body and attachments, links them to the purchase order or
+price request the message answers, and shows them to the staff responsible for that case. To understand a reply (for
+example to tell a price quote from a refusal, or to read a delivery date), the text and attachments are processed
+by:</p>
+<ul>
+  <li>AI language models: Anthropic Claude through SAP AI Core, and Anthropic Claude on Amazon Bedrock as a fallback;</li>
+  <li>Amazon Bedrock Guardrails, which screen the message for unsafe or manipulative content;</li>
+  <li>Amazon Textract, which reads text from attached documents and photographs.</li>
+</ul>
+<p>The model output is a suggestion. A named staff member approves or rejects each consequential step, and every step
+is recorded in an audit trail.</p>
+
+<h2>4. Limited Use</h2>
+<p>Kriox's use and transfer of information received from Google APIs to any other app will adhere to the
+<a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google
+API Services User Data Policy</a>, including the Limited Use requirements. In particular:</p>
+<ul>
+  <li>We use Google user data only to provide the supplier-reply feature described above.</li>
+  <li>We do not sell Google user data and do not use it for advertising, profiling or marketing.</li>
+  <li>We do not use Google user data to train, fine-tune or evaluate generalised AI models.</li>
+  <li>We do not transfer Google user data to others, except to the processors listed in section 3 as needed to
+  provide the feature, to comply with law, or with the user's consent.</li>
+  <li>Humans do not read Google user data except the staff responsible for the case a message belongs to, to
+  investigate abuse or a security problem, or where the law requires it.</li>
+</ul>
+
+<h2>5. Where data is stored and for how long</h2>
+<p>Data is stored in Amazon Web Services in the Asia Pacific (Sydney) region (<code>ap-southeast-2</code>): case and
+audit records in Amazon DynamoDB, attachments in an encrypted, non-public Amazon S3 bucket, and the Gmail access
+credentials (a refresh token and the OAuth client secret) in AWS Secrets Manager. Traffic uses HTTPS. Application
+logs are kept for 30 days.</p>
+<p>The prototype has no automatic deletion schedule for case records. We delete the stored copy of a message on
+request (section 7) and when the system is reset or shut down.</p>
+
+<h2>6. Other information</h2>
+<ul>
+  <li><strong>Staff accounts:</strong> user name, e-mail address, role and password, held by Amazon Cognito.</li>
+  <li><strong>Telegram:</strong> if a user or supplier links a Telegram chat, Kriox stores the chat identifier and the
+  messages and photos exchanged with the bot.</li>
+  <li><strong>Cookies:</strong> the web application uses no advertising or analytics cookies.</li>
+</ul>
+
+<h2>7. Your choices and rights</h2>
+<ul>
+  <li><strong>Revoke Gmail access</strong> at any time at
+  <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Kriox then stops reading
+  the inbox; the stored token no longer works.</li>
+  <li><strong>Ask for access or deletion</strong> of data that came from your messages by writing to
+  <a href="mailto:watund3@gmail.com">watund3@gmail.com</a>. We answer within 30 days.</li>
+</ul>
+
+<h2>8. Security</h2>
+<p>Access is limited by role, secrets are held in AWS Secrets Manager, S3 buckets are not public, and actions are
+written to an audit trail. No prototype is free of risk; do not send information to Kriox that you would not want
+processed as described here.</p>
+
+<h2>9. Children</h2>
+<p>Kriox is a business tool and is not directed to children.</p>
+
+<h2>10. Changes</h2>
+<p>If this policy changes, we change the date above. A change that widens what we do with Google user data will be
+shown here before it takes effect.</p>
+</main>
+<footer>Kriox &middot; contact: <a href="mailto:watund3@gmail.com">watund3@gmail.com</a></footer>
+</body>
+</html>
